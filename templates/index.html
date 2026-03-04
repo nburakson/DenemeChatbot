@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DenemeChatbot – Document Q&amp;A</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <!-- ── Sidebar ─────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+      <h1 class="sidebar-title">📄 DenemeChatbot</h1>
+      <p class="sidebar-subtitle">Upload documents and ask questions about them.</p>
+
+      <!-- Upload section -->
+      <section class="upload-section">
+        <h2>Upload Document</h2>
+        <div class="drop-zone" id="dropZone">
+          <span class="drop-icon">⬆️</span>
+          <p>Drag &amp; drop or click to select</p>
+          <p class="drop-hint">PDF · DOCX · TXT (max 16 MB)</p>
+          <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden />
+        </div>
+        <div id="uploadStatus" class="upload-status"></div>
+        <div id="progressBar" class="progress-bar" style="display:none">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </section>
+
+      <!-- Document list -->
+      <section class="docs-section">
+        <h2>Uploaded Documents <span id="docCount" class="badge">0</span></h2>
+        <ul id="docList" class="doc-list">
+          <li class="doc-empty">No documents yet.</li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- ── Chat area ─────────────────────────────────────────────── -->
+    <main class="chat-area">
+      <div class="chat-header">
+        <span>💬 Chat</span>
+        <button id="clearBtn" class="btn-icon" title="Clear conversation">🗑️</button>
+      </div>
+
+      <div class="messages" id="messages">
+        <div class="message bot-message">
+          <div class="bubble">
+            Hello! Upload one or more documents using the panel on the left, then ask me anything about them.
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <textarea
+          id="userInput"
+          class="chat-input"
+          placeholder="Ask a question about your documents…"
+          rows="1"
+          maxlength="1000"
+        ></textarea>
+        <button id="sendBtn" class="send-btn" title="Send">&#9658;</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
